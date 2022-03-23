@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  front-end: 
+    image: agray998/demo-front-end:v1
+    build: ./front-end
+    ports: 
+      - published: 80
+        target: 5000
+        protocol: tcp
+    networks:
+      - "api-net"
+  back-end:
+    image: agray998/demo-back-end:v1
+    build: ./api
+    networks:
+      - "api-net"
+networks:
+  api-net:
